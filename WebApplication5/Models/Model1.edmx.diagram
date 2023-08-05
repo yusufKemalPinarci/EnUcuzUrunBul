@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4e8880c8e57b4cba84eaecdffae8dea5" Name="Diagram1" ZoomLevel="47">
+        <EntityTypeShape EntityType="veritabani3Model.Kategoriler" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="veritabani3Model.Kullanici" Width="1.5" PointX="10.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="veritabani3Model.Markalar" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="veritabani3Model.OdemeBilgileri" Width="1.5" PointX="11.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="veritabani3Model.Sepet" Width="1.5" PointX="12.5" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="veritabani3Model.Siparisler" Width="1.5" PointX="7.875" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="veritabani3Model.Urunler" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="veritabani3Model.UrunOzellikleri" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="veritabani3Model.UrunResimleri" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="veritabani3Model.UrunSepet" Width="1.5" PointX="8.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="veritabani3Model.Yorumlar" Width="1.5" PointX="8.25" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="veritabani3Model.RAPORLA" Width="1.5" PointX="17.625" PointY="8.625" IsExpanded="true" />
+        <AssociationConnector Association="veritabani3Model.FK__Urunler__Kategor__7C1A6C5A" ManuallyRouted="false" />
+        <AssociationConnector Association="veritabani3Model.FK__Sepet__Kullanici__7EF6D905" ManuallyRouted="false" />
+        <AssociationConnector Association="veritabani3Model.FK__Yorumlar__Kullan__11158940" ManuallyRouted="false" />
+        <AssociationConnector Association="veritabani3Model.FK__Urunler__MarkaID__7B264821" ManuallyRouted="false" />
+        <AssociationConnector Association="veritabani3Model.FK__Siparisle__Sepet__05A3D694" ManuallyRouted="false" />
+        <AssociationConnector Association="veritabani3Model.FK__UrunSepet__Sepet__02C769E9" ManuallyRouted="false" />
+        <AssociationConnector Association="veritabani3Model.FK__UrunOzell__UrunI__0D44F85C" ManuallyRouted="false" />
+        <AssociationConnector Association="veritabani3Model.FK__UrunResim__UrunI__0A688BB1" ManuallyRouted="false" />
+        <AssociationConnector Association="veritabani3Model.FK__UrunSepet__UrunI__01D345B0" ManuallyRouted="false" />
+        <AssociationConnector Association="veritabani3Model.FK__Yorumlar__UrunID__10216507" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

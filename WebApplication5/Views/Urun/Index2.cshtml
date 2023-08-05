@@ -1,0 +1,64 @@
+﻿@using WebApplication5.Models
+@model List<Urunler>
+
+
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            @foreach (Urunler u in Model)
+            {
+
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <!-- Product image-->
+                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">@u.UrunAdi</h5>
+                                <!-- Product reviews-->
+                                <div class="d-flex justify-content-center small text-warning mb-2">
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                </div>
+                                <!-- Product price-->
+                                <h6>fiyat @u.Fiyat tl</h6>
+                                <h7>stok miktarı @u.StokMiktari</h7>
+                            </div>
+                        </div>
+
+                        @if (User.IsInRole("C"))
+                        {
+                            <input class="text-center adet" type="number" id="adet-@u.UrunID" name="StokMiktari" min="1" max="@u.StokMiktari" value="1" />
+
+                        }
+
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            @if (User.IsInRole("C"))
+                            {
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto sepetEkle" urunid="@u.UrunID">Sepete Ekle</a></div>
+
+                            }
+                            @if (User.IsInRole("A") || (User.IsInRole("P")))
+                            {
+                                <div class="text-center"><a data-toggle="modal" data-target="#exampleModal" class="btn btn-danger UrunSill" urunId="@u.UrunID" UrunAdi="@u.UrunAdi">Sil</a>  </div>
+
+                                <div class="text-center"> <a class="btn btn-primary güncelle" urunId="@u.UrunID" href="/Urun/UrunGuncelle/@u.UrunID">Güncelleme</a></div>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+
+
+
+            }
+
+        </div>
+    </div>
+</section>

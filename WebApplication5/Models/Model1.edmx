@@ -1,0 +1,766 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="veritabani3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Kategoriler">
+          <Key>
+            <PropertyRef Name="KategoriID" />
+          </Key>
+          <Property Name="KategoriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KategoriAdi" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kullanici">
+          <Key>
+            <PropertyRef Name="KullaniciID" />
+          </Key>
+          <Property Name="KullaniciID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Rol" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Markalar">
+          <Key>
+            <PropertyRef Name="MarkaID" />
+          </Key>
+          <Property Name="MarkaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MarkaAdi" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OdemeBilgileri">
+          <Key>
+            <PropertyRef Name="OdemeID" />
+          </Key>
+          <Property Name="OdemeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KartNo" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="SonKullanmaTarihi" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CVC" Type="nvarchar" MaxLength="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sepet">
+          <Key>
+            <PropertyRef Name="SepetID" />
+          </Key>
+          <Property Name="SepetID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Siparisler">
+          <Key>
+            <PropertyRef Name="SiparisID" />
+          </Key>
+          <Property Name="SiparisID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SepetID" Type="int" Nullable="false" />
+          <Property Name="ToplamTutar" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Urunler">
+          <Key>
+            <PropertyRef Name="UrunID" />
+          </Key>
+          <Property Name="UrunID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MarkaID" Type="int" Nullable="false" />
+          <Property Name="KategoriID" Type="int" Nullable="false" />
+          <Property Name="UrunAdi" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Fiyat" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="StokMiktari" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UrunOzellikleri">
+          <Key>
+            <PropertyRef Name="OzellikID" />
+          </Key>
+          <Property Name="OzellikID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UrunID" Type="int" Nullable="false" />
+          <Property Name="OzellikAdi" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="OzellikDegeri" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UrunResimleri">
+          <Key>
+            <PropertyRef Name="ResimID" />
+          </Key>
+          <Property Name="ResimID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UrunID" Type="int" Nullable="false" />
+          <Property Name="ResimYolu" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UrunSepet">
+          <Key>
+            <PropertyRef Name="UrunSepetID" />
+          </Key>
+          <Property Name="UrunSepetID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UrunID" Type="int" Nullable="false" />
+          <Property Name="SepetID" Type="int" Nullable="false" />
+          <Property Name="Adet" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Yorumlar">
+          <Key>
+            <PropertyRef Name="YorumID" />
+          </Key>
+          <Property Name="YorumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UrunID" Type="int" Nullable="false" />
+          <Property Name="KullaniciID" Type="int" Nullable="false" />
+          <Property Name="YorumMetni" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Puan" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'veritabani3.dbo.RAPORLA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="RAPORLA">
+          <Key>
+            <PropertyRef Name="UrunAdi" />
+          </Key>
+          <Property Name="UrunAdi" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Sepet__Kullanici__7EF6D905">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+          <End Role="Sepet" Type="Self.Sepet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="KullaniciID" />
+            </Principal>
+            <Dependent Role="Sepet">
+              <PropertyRef Name="KullaniciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Siparisle__Sepet__05A3D694">
+          <End Role="Sepet" Type="Self.Sepet" Multiplicity="1" />
+          <End Role="Siparisler" Type="Self.Siparisler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sepet">
+              <PropertyRef Name="SepetID" />
+            </Principal>
+            <Dependent Role="Siparisler">
+              <PropertyRef Name="SepetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Urunler__Kategor__7C1A6C5A">
+          <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="1" />
+          <End Role="Urunler" Type="Self.Urunler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategoriler">
+              <PropertyRef Name="KategoriID" />
+            </Principal>
+            <Dependent Role="Urunler">
+              <PropertyRef Name="KategoriID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Urunler__MarkaID__7B264821">
+          <End Role="Markalar" Type="Self.Markalar" Multiplicity="1" />
+          <End Role="Urunler" Type="Self.Urunler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Markalar">
+              <PropertyRef Name="MarkaID" />
+            </Principal>
+            <Dependent Role="Urunler">
+              <PropertyRef Name="MarkaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UrunOzell__UrunI__0D44F85C">
+          <End Role="Urunler" Type="Self.Urunler" Multiplicity="1" />
+          <End Role="UrunOzellikleri" Type="Self.UrunOzellikleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Urunler">
+              <PropertyRef Name="UrunID" />
+            </Principal>
+            <Dependent Role="UrunOzellikleri">
+              <PropertyRef Name="UrunID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UrunResim__UrunI__0A688BB1">
+          <End Role="Urunler" Type="Self.Urunler" Multiplicity="1" />
+          <End Role="UrunResimleri" Type="Self.UrunResimleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Urunler">
+              <PropertyRef Name="UrunID" />
+            </Principal>
+            <Dependent Role="UrunResimleri">
+              <PropertyRef Name="UrunID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UrunSepet__Sepet__02C769E9">
+          <End Role="Sepet" Type="Self.Sepet" Multiplicity="1" />
+          <End Role="UrunSepet" Type="Self.UrunSepet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sepet">
+              <PropertyRef Name="SepetID" />
+            </Principal>
+            <Dependent Role="UrunSepet">
+              <PropertyRef Name="SepetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UrunSepet__UrunI__01D345B0">
+          <End Role="Urunler" Type="Self.Urunler" Multiplicity="1" />
+          <End Role="UrunSepet" Type="Self.UrunSepet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Urunler">
+              <PropertyRef Name="UrunID" />
+            </Principal>
+            <Dependent Role="UrunSepet">
+              <PropertyRef Name="UrunID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Yorumlar__Kullan__11158940">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+          <End Role="Yorumlar" Type="Self.Yorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="KullaniciID" />
+            </Principal>
+            <Dependent Role="Yorumlar">
+              <PropertyRef Name="KullaniciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Yorumlar__UrunID__10216507">
+          <End Role="Urunler" Type="Self.Urunler" Multiplicity="1" />
+          <End Role="Yorumlar" Type="Self.Yorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Urunler">
+              <PropertyRef Name="UrunID" />
+            </Principal>
+            <Dependent Role="Yorumlar">
+              <PropertyRef Name="UrunID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SP_RAPORLA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Urunleri_getir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="param1" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="UrunAdi" Type="nvarchar" MaxLength="200" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <EntityContainer Name="veritabani3ModelStoreContainer">
+          <EntitySet Name="Kategoriler" EntityType="Self.Kategoriler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kullanici" EntityType="Self.Kullanici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Markalar" EntityType="Self.Markalar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OdemeBilgileri" EntityType="Self.OdemeBilgileri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sepet" EntityType="Self.Sepet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Siparisler" EntityType="Self.Siparisler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Urunler" EntityType="Self.Urunler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UrunOzellikleri" EntityType="Self.UrunOzellikleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UrunResimleri" EntityType="Self.UrunResimleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UrunSepet" EntityType="Self.UrunSepet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yorumlar" EntityType="Self.Yorumlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RAPORLA" EntityType="Self.RAPORLA" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RAPORLA].[UrunAdi] AS [UrunAdi]
+    FROM [dbo].[RAPORLA] AS [RAPORLA]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Sepet__Kullanici__7EF6D905" Association="Self.FK__Sepet__Kullanici__7EF6D905">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="Sepet" EntitySet="Sepet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Siparisle__Sepet__05A3D694" Association="Self.FK__Siparisle__Sepet__05A3D694">
+            <End Role="Sepet" EntitySet="Sepet" />
+            <End Role="Siparisler" EntitySet="Siparisler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Urunler__Kategor__7C1A6C5A" Association="Self.FK__Urunler__Kategor__7C1A6C5A">
+            <End Role="Kategoriler" EntitySet="Kategoriler" />
+            <End Role="Urunler" EntitySet="Urunler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Urunler__MarkaID__7B264821" Association="Self.FK__Urunler__MarkaID__7B264821">
+            <End Role="Markalar" EntitySet="Markalar" />
+            <End Role="Urunler" EntitySet="Urunler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UrunOzell__UrunI__0D44F85C" Association="Self.FK__UrunOzell__UrunI__0D44F85C">
+            <End Role="Urunler" EntitySet="Urunler" />
+            <End Role="UrunOzellikleri" EntitySet="UrunOzellikleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UrunResim__UrunI__0A688BB1" Association="Self.FK__UrunResim__UrunI__0A688BB1">
+            <End Role="Urunler" EntitySet="Urunler" />
+            <End Role="UrunResimleri" EntitySet="UrunResimleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UrunSepet__Sepet__02C769E9" Association="Self.FK__UrunSepet__Sepet__02C769E9">
+            <End Role="Sepet" EntitySet="Sepet" />
+            <End Role="UrunSepet" EntitySet="UrunSepet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UrunSepet__UrunI__01D345B0" Association="Self.FK__UrunSepet__UrunI__01D345B0">
+            <End Role="Urunler" EntitySet="Urunler" />
+            <End Role="UrunSepet" EntitySet="UrunSepet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Yorumlar__Kullan__11158940" Association="Self.FK__Yorumlar__Kullan__11158940">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="Yorumlar" EntitySet="Yorumlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Yorumlar__UrunID__10216507" Association="Self.FK__Yorumlar__UrunID__10216507">
+            <End Role="Urunler" EntitySet="Urunler" />
+            <End Role="Yorumlar" EntitySet="Yorumlar" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="veritabani3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="Urunleri_getir_Result">
+          <Property Name="UrunAdi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Kategoriler">
+          <Key>
+            <PropertyRef Name="KategoriID" />
+          </Key>
+          <Property Name="KategoriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KategoriAdi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Urunler" Relationship="Self.FK__Urunler__Kategor__7C1A6C5A" FromRole="Kategoriler" ToRole="Urunler" />
+        </EntityType>
+        <EntityType Name="Kullanici">
+          <Key>
+            <PropertyRef Name="KullaniciID" />
+          </Key>
+          <Property Name="KullaniciID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sifre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Rol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Sepet" Relationship="Self.FK__Sepet__Kullanici__7EF6D905" FromRole="Kullanici" ToRole="Sepet" />
+          <NavigationProperty Name="Yorumlar" Relationship="Self.FK__Yorumlar__Kullan__11158940" FromRole="Kullanici" ToRole="Yorumlar" />
+        </EntityType>
+        <EntityType Name="Markalar">
+          <Key>
+            <PropertyRef Name="MarkaID" />
+          </Key>
+          <Property Name="MarkaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MarkaAdi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Urunler" Relationship="Self.FK__Urunler__MarkaID__7B264821" FromRole="Markalar" ToRole="Urunler" />
+        </EntityType>
+        <EntityType Name="OdemeBilgileri">
+          <Key>
+            <PropertyRef Name="OdemeID" />
+          </Key>
+          <Property Name="OdemeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KartNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SonKullanmaTarihi" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CVC" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sepet">
+          <Key>
+            <PropertyRef Name="SepetID" />
+          </Key>
+          <Property Name="SepetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kullanici" Relationship="Self.FK__Sepet__Kullanici__7EF6D905" FromRole="Sepet" ToRole="Kullanici" />
+          <NavigationProperty Name="Siparisler" Relationship="Self.FK__Siparisle__Sepet__05A3D694" FromRole="Sepet" ToRole="Siparisler" />
+          <NavigationProperty Name="UrunSepet" Relationship="Self.FK__UrunSepet__Sepet__02C769E9" FromRole="Sepet" ToRole="UrunSepet" />
+        </EntityType>
+        <EntityType Name="Siparisler">
+          <Key>
+            <PropertyRef Name="SiparisID" />
+          </Key>
+          <Property Name="SiparisID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SepetID" Type="Int32" Nullable="false" />
+          <Property Name="ToplamTutar" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Sepet" Relationship="Self.FK__Siparisle__Sepet__05A3D694" FromRole="Siparisler" ToRole="Sepet" />
+        </EntityType>
+        <EntityType Name="Urunler">
+          <Key>
+            <PropertyRef Name="UrunID" />
+          </Key>
+          <Property Name="UrunID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MarkaID" Type="Int32" Nullable="false" />
+          <Property Name="KategoriID" Type="Int32" Nullable="false" />
+          <Property Name="UrunAdi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fiyat" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="StokMiktari" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kategoriler" Relationship="Self.FK__Urunler__Kategor__7C1A6C5A" FromRole="Urunler" ToRole="Kategoriler" />
+          <NavigationProperty Name="Markalar" Relationship="Self.FK__Urunler__MarkaID__7B264821" FromRole="Urunler" ToRole="Markalar" />
+          <NavigationProperty Name="UrunOzellikleri" Relationship="Self.FK__UrunOzell__UrunI__0D44F85C" FromRole="Urunler" ToRole="UrunOzellikleri" />
+          <NavigationProperty Name="UrunResimleri" Relationship="Self.FK__UrunResim__UrunI__0A688BB1" FromRole="Urunler" ToRole="UrunResimleri" />
+          <NavigationProperty Name="UrunSepet" Relationship="Self.FK__UrunSepet__UrunI__01D345B0" FromRole="Urunler" ToRole="UrunSepet" />
+          <NavigationProperty Name="Yorumlar" Relationship="Self.FK__Yorumlar__UrunID__10216507" FromRole="Urunler" ToRole="Yorumlar" />
+        </EntityType>
+        <EntityType Name="UrunOzellikleri">
+          <Key>
+            <PropertyRef Name="OzellikID" />
+          </Key>
+          <Property Name="OzellikID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UrunID" Type="Int32" Nullable="false" />
+          <Property Name="OzellikAdi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OzellikDegeri" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Urunler" Relationship="Self.FK__UrunOzell__UrunI__0D44F85C" FromRole="UrunOzellikleri" ToRole="Urunler" />
+        </EntityType>
+        <EntityType Name="UrunResimleri">
+          <Key>
+            <PropertyRef Name="ResimID" />
+          </Key>
+          <Property Name="ResimID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UrunID" Type="Int32" Nullable="false" />
+          <Property Name="ResimYolu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Urunler" Relationship="Self.FK__UrunResim__UrunI__0A688BB1" FromRole="UrunResimleri" ToRole="Urunler" />
+        </EntityType>
+        <EntityType Name="UrunSepet">
+          <Key>
+            <PropertyRef Name="UrunSepetID" />
+          </Key>
+          <Property Name="UrunSepetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UrunID" Type="Int32" Nullable="false" />
+          <Property Name="SepetID" Type="Int32" Nullable="false" />
+          <Property Name="Adet" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sepet" Relationship="Self.FK__UrunSepet__Sepet__02C769E9" FromRole="UrunSepet" ToRole="Sepet" />
+          <NavigationProperty Name="Urunler" Relationship="Self.FK__UrunSepet__UrunI__01D345B0" FromRole="UrunSepet" ToRole="Urunler" />
+        </EntityType>
+        <EntityType Name="Yorumlar">
+          <Key>
+            <PropertyRef Name="YorumID" />
+          </Key>
+          <Property Name="YorumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UrunID" Type="Int32" Nullable="false" />
+          <Property Name="KullaniciID" Type="Int32" Nullable="false" />
+          <Property Name="YorumMetni" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Puan" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kullanici" Relationship="Self.FK__Yorumlar__Kullan__11158940" FromRole="Yorumlar" ToRole="Kullanici" />
+          <NavigationProperty Name="Urunler" Relationship="Self.FK__Yorumlar__UrunID__10216507" FromRole="Yorumlar" ToRole="Urunler" />
+        </EntityType>
+        <EntityType Name="RAPORLA">
+          <Key>
+            <PropertyRef Name="UrunAdi" />
+          </Key>
+          <Property Name="UrunAdi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Urunler__Kategor__7C1A6C5A">
+          <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="1" />
+          <End Role="Urunler" Type="Self.Urunler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategoriler">
+              <PropertyRef Name="KategoriID" />
+            </Principal>
+            <Dependent Role="Urunler">
+              <PropertyRef Name="KategoriID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sepet__Kullanici__7EF6D905">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+          <End Role="Sepet" Type="Self.Sepet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="KullaniciID" />
+            </Principal>
+            <Dependent Role="Sepet">
+              <PropertyRef Name="KullaniciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Yorumlar__Kullan__11158940">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+          <End Role="Yorumlar" Type="Self.Yorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="KullaniciID" />
+            </Principal>
+            <Dependent Role="Yorumlar">
+              <PropertyRef Name="KullaniciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Urunler__MarkaID__7B264821">
+          <End Role="Markalar" Type="Self.Markalar" Multiplicity="1" />
+          <End Role="Urunler" Type="Self.Urunler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Markalar">
+              <PropertyRef Name="MarkaID" />
+            </Principal>
+            <Dependent Role="Urunler">
+              <PropertyRef Name="MarkaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Siparisle__Sepet__05A3D694">
+          <End Role="Sepet" Type="Self.Sepet" Multiplicity="1" />
+          <End Role="Siparisler" Type="Self.Siparisler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sepet">
+              <PropertyRef Name="SepetID" />
+            </Principal>
+            <Dependent Role="Siparisler">
+              <PropertyRef Name="SepetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UrunSepet__Sepet__02C769E9">
+          <End Role="Sepet" Type="Self.Sepet" Multiplicity="1" />
+          <End Role="UrunSepet" Type="Self.UrunSepet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sepet">
+              <PropertyRef Name="SepetID" />
+            </Principal>
+            <Dependent Role="UrunSepet">
+              <PropertyRef Name="SepetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UrunOzell__UrunI__0D44F85C">
+          <End Role="Urunler" Type="Self.Urunler" Multiplicity="1" />
+          <End Role="UrunOzellikleri" Type="Self.UrunOzellikleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Urunler">
+              <PropertyRef Name="UrunID" />
+            </Principal>
+            <Dependent Role="UrunOzellikleri">
+              <PropertyRef Name="UrunID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UrunResim__UrunI__0A688BB1">
+          <End Role="Urunler" Type="Self.Urunler" Multiplicity="1" />
+          <End Role="UrunResimleri" Type="Self.UrunResimleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Urunler">
+              <PropertyRef Name="UrunID" />
+            </Principal>
+            <Dependent Role="UrunResimleri">
+              <PropertyRef Name="UrunID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UrunSepet__UrunI__01D345B0">
+          <End Role="Urunler" Type="Self.Urunler" Multiplicity="1" />
+          <End Role="UrunSepet" Type="Self.UrunSepet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Urunler">
+              <PropertyRef Name="UrunID" />
+            </Principal>
+            <Dependent Role="UrunSepet">
+              <PropertyRef Name="UrunID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Yorumlar__UrunID__10216507">
+          <End Role="Urunler" Type="Self.Urunler" Multiplicity="1" />
+          <End Role="Yorumlar" Type="Self.Yorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Urunler">
+              <PropertyRef Name="UrunID" />
+            </Principal>
+            <Dependent Role="Yorumlar">
+              <PropertyRef Name="UrunID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="veritabani3Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Kategoriler" EntityType="Self.Kategoriler" />
+          <EntitySet Name="Kullanici" EntityType="Self.Kullanici" />
+          <EntitySet Name="Markalar" EntityType="Self.Markalar" />
+          <EntitySet Name="OdemeBilgileri" EntityType="Self.OdemeBilgileri" />
+          <EntitySet Name="Sepet" EntityType="Self.Sepet" />
+          <EntitySet Name="Siparisler" EntityType="Self.Siparisler" />
+          <EntitySet Name="Urunler" EntityType="Self.Urunler" />
+          <EntitySet Name="UrunOzellikleri" EntityType="Self.UrunOzellikleri" />
+          <EntitySet Name="UrunResimleri" EntityType="Self.UrunResimleri" />
+          <EntitySet Name="UrunSepet" EntityType="Self.UrunSepet" />
+          <EntitySet Name="Yorumlar" EntityType="Self.Yorumlar" />
+          <EntitySet Name="RAPORLA" EntityType="Self.RAPORLA" />
+          <AssociationSet Name="FK__Urunler__Kategor__7C1A6C5A" Association="Self.FK__Urunler__Kategor__7C1A6C5A">
+            <End Role="Kategoriler" EntitySet="Kategoriler" />
+            <End Role="Urunler" EntitySet="Urunler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sepet__Kullanici__7EF6D905" Association="Self.FK__Sepet__Kullanici__7EF6D905">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="Sepet" EntitySet="Sepet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Yorumlar__Kullan__11158940" Association="Self.FK__Yorumlar__Kullan__11158940">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="Yorumlar" EntitySet="Yorumlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Urunler__MarkaID__7B264821" Association="Self.FK__Urunler__MarkaID__7B264821">
+            <End Role="Markalar" EntitySet="Markalar" />
+            <End Role="Urunler" EntitySet="Urunler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Siparisle__Sepet__05A3D694" Association="Self.FK__Siparisle__Sepet__05A3D694">
+            <End Role="Sepet" EntitySet="Sepet" />
+            <End Role="Siparisler" EntitySet="Siparisler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UrunSepet__Sepet__02C769E9" Association="Self.FK__UrunSepet__Sepet__02C769E9">
+            <End Role="Sepet" EntitySet="Sepet" />
+            <End Role="UrunSepet" EntitySet="UrunSepet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UrunOzell__UrunI__0D44F85C" Association="Self.FK__UrunOzell__UrunI__0D44F85C">
+            <End Role="Urunler" EntitySet="Urunler" />
+            <End Role="UrunOzellikleri" EntitySet="UrunOzellikleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UrunResim__UrunI__0A688BB1" Association="Self.FK__UrunResim__UrunI__0A688BB1">
+            <End Role="Urunler" EntitySet="Urunler" />
+            <End Role="UrunResimleri" EntitySet="UrunResimleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UrunSepet__UrunI__01D345B0" Association="Self.FK__UrunSepet__UrunI__01D345B0">
+            <End Role="Urunler" EntitySet="Urunler" />
+            <End Role="UrunSepet" EntitySet="UrunSepet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Yorumlar__UrunID__10216507" Association="Self.FK__Yorumlar__UrunID__10216507">
+            <End Role="Urunler" EntitySet="Urunler" />
+            <End Role="Yorumlar" EntitySet="Yorumlar" />
+          </AssociationSet>
+          <FunctionImport Name="Urunleri_getir" IsComposable="true" ReturnType="Collection(veritabani3Model.Urunleri_getir_Result)">
+            <Parameter Name="param1" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_RAPORLA" ReturnType="Collection(String)" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="veritabani3ModelStoreContainer" CdmEntityContainer="veritabani3Entities">
+          <EntitySetMapping Name="Kategoriler">
+            <EntityTypeMapping TypeName="veritabani3Model.Kategoriler">
+              <MappingFragment StoreEntitySet="Kategoriler">
+                <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+                <ScalarProperty Name="KategoriAdi" ColumnName="KategoriAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanici">
+            <EntityTypeMapping TypeName="veritabani3Model.Kullanici">
+              <MappingFragment StoreEntitySet="Kullanici">
+                <ScalarProperty Name="KullaniciID" ColumnName="KullaniciID" />
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Markalar">
+            <EntityTypeMapping TypeName="veritabani3Model.Markalar">
+              <MappingFragment StoreEntitySet="Markalar">
+                <ScalarProperty Name="MarkaID" ColumnName="MarkaID" />
+                <ScalarProperty Name="MarkaAdi" ColumnName="MarkaAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OdemeBilgileri">
+            <EntityTypeMapping TypeName="veritabani3Model.OdemeBilgileri">
+              <MappingFragment StoreEntitySet="OdemeBilgileri">
+                <ScalarProperty Name="OdemeID" ColumnName="OdemeID" />
+                <ScalarProperty Name="KartNo" ColumnName="KartNo" />
+                <ScalarProperty Name="SonKullanmaTarihi" ColumnName="SonKullanmaTarihi" />
+                <ScalarProperty Name="CVC" ColumnName="CVC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sepet">
+            <EntityTypeMapping TypeName="veritabani3Model.Sepet">
+              <MappingFragment StoreEntitySet="Sepet">
+                <ScalarProperty Name="SepetID" ColumnName="SepetID" />
+                <ScalarProperty Name="KullaniciID" ColumnName="KullaniciID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Siparisler">
+            <EntityTypeMapping TypeName="veritabani3Model.Siparisler">
+              <MappingFragment StoreEntitySet="Siparisler">
+                <ScalarProperty Name="SiparisID" ColumnName="SiparisID" />
+                <ScalarProperty Name="SepetID" ColumnName="SepetID" />
+                <ScalarProperty Name="ToplamTutar" ColumnName="ToplamTutar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Urunler">
+            <EntityTypeMapping TypeName="veritabani3Model.Urunler">
+              <MappingFragment StoreEntitySet="Urunler">
+                <ScalarProperty Name="UrunID" ColumnName="UrunID" />
+                <ScalarProperty Name="MarkaID" ColumnName="MarkaID" />
+                <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+                <ScalarProperty Name="UrunAdi" ColumnName="UrunAdi" />
+                <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+                <ScalarProperty Name="StokMiktari" ColumnName="StokMiktari" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UrunOzellikleri">
+            <EntityTypeMapping TypeName="veritabani3Model.UrunOzellikleri">
+              <MappingFragment StoreEntitySet="UrunOzellikleri">
+                <ScalarProperty Name="OzellikID" ColumnName="OzellikID" />
+                <ScalarProperty Name="UrunID" ColumnName="UrunID" />
+                <ScalarProperty Name="OzellikAdi" ColumnName="OzellikAdi" />
+                <ScalarProperty Name="OzellikDegeri" ColumnName="OzellikDegeri" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UrunResimleri">
+            <EntityTypeMapping TypeName="veritabani3Model.UrunResimleri">
+              <MappingFragment StoreEntitySet="UrunResimleri">
+                <ScalarProperty Name="ResimID" ColumnName="ResimID" />
+                <ScalarProperty Name="UrunID" ColumnName="UrunID" />
+                <ScalarProperty Name="ResimYolu" ColumnName="ResimYolu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UrunSepet">
+            <EntityTypeMapping TypeName="veritabani3Model.UrunSepet">
+              <MappingFragment StoreEntitySet="UrunSepet">
+                <ScalarProperty Name="UrunSepetID" ColumnName="UrunSepetID" />
+                <ScalarProperty Name="UrunID" ColumnName="UrunID" />
+                <ScalarProperty Name="SepetID" ColumnName="SepetID" />
+                <ScalarProperty Name="Adet" ColumnName="Adet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yorumlar">
+            <EntityTypeMapping TypeName="veritabani3Model.Yorumlar">
+              <MappingFragment StoreEntitySet="Yorumlar">
+                <ScalarProperty Name="YorumID" ColumnName="YorumID" />
+                <ScalarProperty Name="UrunID" ColumnName="UrunID" />
+                <ScalarProperty Name="KullaniciID" ColumnName="KullaniciID" />
+                <ScalarProperty Name="YorumMetni" ColumnName="YorumMetni" />
+                <ScalarProperty Name="Puan" ColumnName="Puan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RAPORLA">
+            <EntityTypeMapping TypeName="veritabani3Model.RAPORLA">
+              <MappingFragment StoreEntitySet="RAPORLA">
+                <ScalarProperty Name="UrunAdi" ColumnName="UrunAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionName="veritabani3Model.Store.Urunleri_getir" FunctionImportName="Urunleri_getir">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="veritabani3Model.Urunleri_getir_Result">
+                <ScalarProperty Name="UrunAdi" ColumnName="UrunAdi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_RAPORLA" FunctionName="veritabani3Model.Store.SP_RAPORLA" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

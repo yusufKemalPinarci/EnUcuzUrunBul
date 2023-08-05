@@ -1,0 +1,63 @@
+﻿@using WebApplication5.Models;
+@model Urunler
+
+@{
+    ViewBag.Title = "UrunEkle";
+}
+
+<h2>Ürün Ekleme Sayfası</h2>
+
+<form action="/Urun/UrunEkle" method="post">
+
+    <div class="form-group">
+        <label for="UrunID">URUN ID:</label>
+        <input type="hidden" class="form-control" value="@Model.UrunID " id="UrunID" name="UrunID">
+    </div>
+
+    <div class="form-group">
+        <label for="UrunAdi">URUN ADI:</label>
+        <input type="text" class="form-control" value="@Model.UrunAdi " id="UrunAdi" name="UrunAdi">
+    </div>
+
+
+
+    <div class="form-group">
+        <label for="Fiyat">FIYAT:</label>
+        <input type="number" class="form-control" value="@Model.Fiyat " id="Fiyat" name="Fiyat">
+    </div>
+
+    <div class="form-group">
+        <label for="StokMiktrai">StokMiktari:</label>
+        <input type="number" class="form-control" value="@Model.StokMiktari " id="StokMiktari" name="StokMiktari">
+    </div>
+
+
+    <div class="form-group">
+        <label>Marka</label>
+        <select class="form-select-list" id="MarkaID" name="MarkaID">
+            @foreach (Markalar m in ViewBag.marka as List<Markalar>)
+            {
+                <option value="@m.MarkaID">@m.MarkaAdi</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Kategori</label>
+        <select class="form-select-list" id="KategoriID" name="KategoriID">
+            @foreach (Kategoriler k in ViewBag.kategori as List<Kategoriler>)
+            {
+                <option value="@k.KategoriID">@k.KategoriAdi</option>
+            }
+        </select>
+    </div>
+
+
+
+
+    <div class="form-group form-check">
+    </div>
+    <button type="submit" class="btn btn-primary">Ürün Ekle</button>
+
+</form>
+
