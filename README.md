@@ -1,4 +1,12 @@
 
+ 
+  <div class="image-container">
+    <img src="https://github.com/yusufKemalPinarci/EnUcuzUrunBul/blob/master/proje%20resimleri/giris.png" alt="Giriş" />
+    <figcaption>Giriş Sayfası</figcaption>
+  </div>
+  <br>
+  <br>
+ 
  <div class="image-container">
     <img src="https://github.com/yusufKemalPinarci/EnUcuzUrunBul/blob/master/proje%20resimleri/alt%20kategori.png" alt="Alt Kategori" />
     <figcaption>Alt Kategori</figcaption>
@@ -21,13 +29,9 @@
   </div>
   <br>
   <br>
-  <div class="image-container">
-    <img src="https://github.com/yusufKemalPinarci/EnUcuzUrunBul/blob/master/proje%20resimleri/giris.png" alt="Giriş" />
-    <figcaption>Giriş Sayfası</figcaption>
-  </div>
+ 
 
-<br>
-  <br>
+
 
 
   <div class="image-container">
