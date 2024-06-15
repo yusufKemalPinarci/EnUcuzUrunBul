@@ -10,6 +10,8 @@
   </div>
 </div>
 
+<br>
+
 <div class="image-row">
   <div class="image-container">
     <img src="https://github.com/yusufKemalPinarci/EnUcuzUrunBul/blob/master/proje%20resimleri/arad%C4%B1%C4%9F%C4%B1m%C4%B1z%20%C3%BCr%C3%BCn%20bulma.png" alt="Aradığımız Ürün Bulma" />
