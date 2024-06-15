@@ -1,18 +1,3 @@
-<style>
-  .image-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px; /* Satırlar arasında boşluk */
-  }
-  .image-container {
-    text-align: center;
-    width: 48%; /* Resimler arasında boşluk bırakmak için */
-  }
-  .image-container img {
-    width: 100%;
-    height: auto;
-  }
-</style>
 
 <div class="image-row">
   <div class="image-container">
