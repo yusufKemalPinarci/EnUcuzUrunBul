@@ -13,7 +13,7 @@
 import os
 
 # Resimlerin bulunduğu klasör
-image_folder = 'https://github.com/yusufKemalPinarci/EnUcuzUrunBul/tree/master/proje%20resimleri'
+image_folder = 'proje resimleri'
 
 # README dosyasına yazmak için dosya aç
 with open('README.md', 'a') as readme_file:
