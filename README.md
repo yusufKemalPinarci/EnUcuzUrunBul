@@ -3,6 +3,8 @@
     <img src="https://github.com/yusufKemalPinarci/EnUcuzUrunBul/blob/master/proje%20resimleri/alt%20kategori.png" width="400" height="200" />
     <figcaption>Alt Kategori</figcaption>
   </figure>
+
+  
   <figure>
     <img src="https://github.com/yusufKemalPinarci/EnUcuzUrunBul/blob/master/proje%20resimleri/ana%20kategori.png" width="400" height="200" />
     <figcaption>Ana Kategori</figcaption>
