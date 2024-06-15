@@ -23,7 +23,7 @@
   <br>
   <div class="image-container">
     <img src="https://github.com/yusufKemalPinarci/EnUcuzUrunBul/blob/master/proje%20resimleri/giris.png" alt="Giriş" />
-    <figcaption>Giriş</figcaption>
+    <figcaption>Giriş Sayfası</figcaption>
   </div>
 </div>
 <br>
@@ -52,7 +52,7 @@
   <br>
   <br>
   <div class="image-container">
-    <img src="https://github.com/yusufKemalPinarci/EnUcuzUrunBul/blob/master/proje%20resimleri/sikayet.png" alt="Şikayet" />
+    <img src="https://github.com/yusufKemalPinarci/EnUcuzUrunBul/blob/master/proje%20resimleri/sikayet.png" alt="Şikayet Alt Menü" />
     <figcaption>Şikayet</figcaption>
   </div>
 </div>
@@ -61,7 +61,7 @@
 
 <div class="image-row">
   <div class="image-container">
-    <img src="https://github.com/yusufKemalPinarci/EnUcuzUrunBul/blob/master/proje%20resimleri/siparis%20verilsin%20mi.png" alt="Sipariş Verilsin Mi?" />
+    <img src="https://github.com/yusufKemalPinarci/EnUcuzUrunBul/blob/master/proje%20resimleri/siparis%20verilsin%20mi.png" alt="    Sipariş Verilsin Mi?" />
     <figcaption>Sipariş Verilsin Mi?</figcaption>
   </div>
   <br>
